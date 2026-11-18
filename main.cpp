@@ -1,32 +1,33 @@
 #include <iostream>
+#include <string> 
 using namespace std;
 
-int main() {
-    int nilai;
+int main()
+{
+    float nilai;
     string ulang;
 
-    do {
-        cout << "masukkan nilai" << endl;
+    do{
+        cout<< "masukan nilai ";
         cin >> nilai;
 
-        if (nilai > 90) {
-            cout << "nilai A" << endl;
+        if (nilai > 90) { 
+            cout << "hasil grade : A" << endl;
         }
         else if (nilai > 80) {
-            cout << "nilai B" << endl;
+            cout << "hasil grade : B" << endl;
         }
         else if (nilai > 70) {
-            cout << "nilai C" << endl;
+            cout << "hasil grade : C" << endl;
         }
         else {
-            cout << "nilai D" << endl;
+            cout << "hasil grade : D" << endl;
         }
-
-        cout << "anda mau mengulang tekan y atau Y";
+        cout << "========================================" << endl;
+        cout << "apakah anda mau mengulangi. tekan Y atay y : ";
         cin >> ulang;
-
+        cout << endl;
     } while (ulang == "y" || ulang == "Y");
-
-    system("pause");
-    return 0;
+return 0;
 }
+
