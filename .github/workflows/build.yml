@@ -1,4 +1,5 @@
-name: Build Tugas 4 C++
+
+name: Build EXE Nilai
 
 on:
   push:
@@ -7,23 +8,26 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Install compiler
+      - name: Setup MSYS2
+        uses: msys2/setup-msys2@v2
+        with:
+          msystem: MINGW64
+          update: true
+          install: mingw-w64-x86_64-gcc
+
+      - name: Compile C++
+        shell: msys2 {0}
         run: |
-          sudo apt-get update
-          sudo apt-get install -y g++
+          g++ -std=c++17 -O2 -static -static-libgcc -static-libstdc++ main.cpp -o nilai.exe
 
-      - name: Build program C++
-        run: g++ -std=c++17 *.cpp -o tugas4
-
-      - name: Upload Artifact
+      - name: Upload EXE
         uses: actions/upload-artifact@v4
         with:
-          name: tugas4
-          path: tugas4
-          if-no-files-found: error
+          name: NILAI-EXE
+          path: nilai.exe
